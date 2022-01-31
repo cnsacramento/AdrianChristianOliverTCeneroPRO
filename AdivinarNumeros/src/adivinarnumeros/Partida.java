@@ -32,7 +32,7 @@ public class Partida {
      * Método que sirve para generar un número aleatorio en función de la dificultad
      * @return devuelve el número aleatorio llamado número secreto
      */
-    public int generarAleatorio() {
+    public int generarNumeroSecreto() {
         
         Random rnd = new Random();
         switch (dificultad) {
