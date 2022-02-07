@@ -5,17 +5,55 @@
  */
 package adivinarnumeros;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Christian Novo Sacramento 1ºDAM
  */
 public class AdivinarNumeros {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("===============================");
+        System.out.println("|| JUEGO DE ADIVINAR NÚMEROS ||");
+        System.out.println("===============================");
+
+        String continuar = ""; //Sirve para salir del bucle
+        int opcion = 0; //Sirve para elegir una opción del menu
+        while (!continuar.equals("n")) {
+            //Se genera el menú con las distintas opciones
+            System.out.println("*******************************");
+            System.out.println("*            MENÚ             *");
+            System.out.println("*******************************");
+            System.out.println("* 1. Crear nuevo jugador      *");
+            System.out.println("* 2. Jugar Partida            *");
+            System.out.println("* 3. Ver el historial jugador *");
+            System.out.println("* 4. Ver el ranking jugadores *");
+            System.out.println("*******************************");
+            opcion = sc.nextInt(); //Recoge la opción seleccionada
+            if (opcion < 1 && opcion > 4) { //Entrega error en caso de que no se ponga un número del 1 al 4
+                System.out.println("ERROR!!! (Debe seleccionar un número del 1 al 4) ");
+                System.out.printf("Opción: ");
+            }
+
+            switch (opcion) { //Realiza la opción seleccionada
+                case 1: break;
+                case 2: break;
+                case 3: break;
+                case 4: break;
+            }
+
+            System.out.println("¿Desea continuar? S/N"); //Se crea la salida o continuación del menú
+            continuar = sc.nextLine().toLowerCase();
+            if (!continuar.equals("s") && !continuar.equals("n")) { //En caso de no pulsar S/N manda error
+                System.out.println("ERROR!!! (Debe introducir \"S\" o \"N\") ");
+                System.out.printf("Elección: ");
+                continuar = sc.nextLine().toLowerCase();
+            }
+
+        }
     }
-    
+
 }
