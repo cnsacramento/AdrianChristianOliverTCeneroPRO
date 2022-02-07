@@ -22,6 +22,7 @@ public class AdivinarNumeros {
 
         String continuar = ""; //Sirve para salir del bucle
         int opcion = 0; //Sirve para elegir una opción del menu
+        int dificultad = 0; //Selecciona el nivel de dificultad
         while (!continuar.equals("n")) {
             //Se genera el menú con las distintas opciones
             System.out.println("*******************************");
@@ -40,7 +41,15 @@ public class AdivinarNumeros {
 
             switch (opcion) { //Realiza la opción seleccionada
                 case 1: break;
-                case 2: break;
+                case 2:
+                    System.out.println("¿Qué nivel de dificultad deseas?");
+                    System.out.println("1. Fácil\n" + "2. Medio\n" + "3. Díficil\n" 
+                            + "4. Leyenda");
+                    dificultad = sc.nextInt();
+                    if (dificultad < 1 && dificultad > 2) { //Corrige si la dificultad está mal indicada
+                        System.out.println("ERROR!!! (Debe seleccionar una dificultad del 1 al 4)");
+                    }
+                    break;
                 case 3: break;
                 case 4: break;
             }
