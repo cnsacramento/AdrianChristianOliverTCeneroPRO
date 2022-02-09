@@ -50,13 +50,15 @@ public class AdivinarNumeros {
                     System.out.println("¿Qué nivel de dificultad deseas?");
                     System.out.println("1. Fácil\n" + "2. Medio\n" + "3. Díficil\n" 
                             + "4. Leyenda");
-                    dificultad = sc.nextInt();
+                    dificultad = sc.nextInt();sc.nextLine();
                     while (dificultad < 1 || dificultad > 4) { //Corrige si la dificultad está mal indicada
                         System.out.println("ERROR!!! (Debe seleccionar una dificultad del 1 al 4)");
                         dificultad = sc.nextInt();sc.nextLine();
                     }
                     break;
-                case 3: break;
+                case 3:
+                    
+                    break;
                 case 4: break;
             }
 
