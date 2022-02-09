@@ -44,7 +44,7 @@ public class AdivinarNumeros {
             switch (opcion) { //Realiza la opción seleccionada
                 case 1: 
                     System.out.println("¿Qué alias deseas ponerte?");
-                    alias = sc.nextLine();
+                    alias = sc.nextLine(); sc.nextLine();
                     break;
                 case 2:
                     System.out.println("¿Qué nivel de dificultad deseas?");
@@ -62,12 +62,12 @@ public class AdivinarNumeros {
 
             System.out.println("¿Desea continuar? S/N"); //Se crea la salida o continuación del menú
             continuar = sc.nextLine().toLowerCase();
-            while (!continuar.equals("s") || !continuar.equals("n")) { //En caso de no pulsar S/N manda error
+            
+            while (!continuar.equals("s") && !continuar.equals("n")) { //En caso de no pulsar S/N manda error
                 System.out.println("ERROR!!! (Debe introducir \"S\" o \"N\") ");
                 System.out.printf("Elección: ");
                 continuar = sc.nextLine().toLowerCase();
             }
-
         }
     }
 
