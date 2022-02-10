@@ -76,9 +76,14 @@ public class Main {
                     sc.nextLine();
                     break;
                 case 2:
-                    System.out.println("¿Qué nivel de dificultad deseas?");
-                    System.out.println("1. Fácil\n" + "2. Medio\n" + "3. Díficil\n"
-                            + "4. Leyenda");
+                    System.out.println("************************************");
+                    System.out.println("* ¿Qué nivel de dificultad deseas? *");
+                    System.out.println("* 1. Fácil\t\t\t   * \n" 
+                            + "* 2. Medio\t\t\t   * \n" 
+                            + "* 3. Díficil\t\t\t   * \n"
+                            + "* 4. Leyenda\t\t\t   * ");
+                    System.out.println("************************************");
+                    System.out.printf("DIFICULTAD: ");
                     dificultad = sc.nextInt();
                     sc.nextLine();
                     while (dificultad < 1 || dificultad > 4) { //Corrige si la dificultad está mal indicada
@@ -92,7 +97,8 @@ public class Main {
                     if (dificultad == 1) {
                         intentos = 3;
                         while(intentos > 0) {
-                            System.out.println("Te quedan " + intentos + " intentos");
+                            
+                            System.out.println("Te quedan " + intentos + " intentos.\n");
                             System.out.printf("Escribe un número entre 1 y 10: ");
                             numeroPropuesto = sc.nextInt();sc.nextLine();
                             if (numeroPropuesto == numeroSecreto) {
@@ -104,14 +110,14 @@ public class Main {
                                         : "El número secreto es mayor a " + numeroPropuesto );
                                 intentos--; 
                                 if (intentos == 0) {
-                                System.out.println("¡Has pérdido! El número era: " + numeroSecreto);
+                                System.out.println("¡Has pérdido! El número era: " + numeroSecreto + "\n");
                                 }
                             }
                         }
                     }else if (dificultad == 2) {
                         intentos = 5;
                         while(intentos > 0) {
-                            System.out.println("Te quedan " + intentos + " intentos");
+                            System.out.println("Te quedan " + intentos + " intentos\n");
                             System.out.printf("Escribe un número entre 1 y 100: ");
                             numeroPropuesto = sc.nextInt();sc.nextLine();
                             if (numeroPropuesto == numeroSecreto) {
@@ -130,7 +136,7 @@ public class Main {
                     }else if (dificultad == 3) {
                         intentos = 7;
                         while(intentos > 0) {
-                            System.out.println("Te quedan " + intentos + " intentos");
+                            System.out.println("Te quedan " + intentos + " intentos\n");
                             System.out.printf("Escribe un número entre 1 y 1000: ");
                             numeroPropuesto = sc.nextInt();sc.nextLine();
                             if (numeroPropuesto == numeroSecreto) {
@@ -149,8 +155,8 @@ public class Main {
                     }else if (dificultad == 4) {
                         intentos = 10;
                         while(intentos > 0) {
-                            System.out.println("Te quedan " + intentos + " intentos");
-                            System.out.printf("Escribe un número entre 1 y 1000: ");
+                            System.out.println("Te quedan " + intentos + " intentos\n");
+                            System.out.printf("Escribe un número entre 1 y 10000: ");
                             numeroPropuesto = sc.nextInt();sc.nextLine();
                             if (numeroPropuesto == numeroSecreto) {
                                 System.out.println("¡¡¡ENHORABUENA!!! Has acertado el número");
@@ -174,7 +180,7 @@ public class Main {
                     break;
             }
 
-            System.out.println("¿Desea continuar? S/N"); //Se crea la salida o continuación del menú
+            System.out.println("\n¿Desea continuar? S/N"); //Se crea la salida o continuación del menú
             System.out.printf("Elección: ");
             continuar = sc.nextLine().toLowerCase();
 
