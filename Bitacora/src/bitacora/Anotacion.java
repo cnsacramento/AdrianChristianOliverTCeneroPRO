@@ -25,4 +25,9 @@ public class Anotacion {
         this.cabecera = cabecera;
         this.cuerpo = cuerpo;
     }
+    
+    public String toString() {
+        
+        return "\t" + cabecera + "\n" + cuerpo;
+    }
 }
