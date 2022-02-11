@@ -61,8 +61,7 @@ public class Main {
                     nombreProyecto = sc.nextLine();
                     System.out.println("Descripción del Proyecto: ");
                     descripcionProyecto = sc.nextLine();
-                    proyecto = new Proyecto
-                    (nombreProyecto,descripcionProyecto, proyectoAnotaciones);
+                    proyecto = new Proyecto(nombreProyecto,descripcionProyecto, proyectoAnotaciones);
                     proyectos.put(nombreProyecto, proyecto);
                     gestorProyectos = new GestorProyectos(proyectos);
                     break;
@@ -83,20 +82,20 @@ public class Main {
                     HashMap listadoProyectos = gestorProyectos.getProyectos();
                     Set<String> claves = listadoProyectos.keySet();
                     for (String clave : claves) { //Recorre el hasmap en busca de las claves
-                        System.out.println( clave );
+                        System.out.println( "-" + clave );
                     }
-                    System.out.println("¿Qué proyecto quieres ver?");
+                    System.out.println("\n¿Qué proyecto quieres ver?");
                     nombreProyecto = sc.nextLine();
-                    
                     System.out.println(listadoProyectos.get(nombreProyecto));
+                    
                     System.out.println("\n" + "Listado de Anotaciones del proyecto " + nombreProyecto);
                     HashMap listadoAnotaciones = proyecto.getAnotaciones();
                     
                     claves = listadoAnotaciones.keySet();
                     for (String clave : claves) { 
-                        System.out.println(clave);
+                        System.out.println("-" + clave);
                     }
-                    System.out.println("¿Qué anotación deseas ver?");
+                    System.out.println("\n¿Qué anotación deseas ver?");
                     nombreAnotacion = sc.nextLine();
                     System.out.println( "\n" + listadoAnotaciones.get(nombreAnotacion) + "\n" );
                     break;
