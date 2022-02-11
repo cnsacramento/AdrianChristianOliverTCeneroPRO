@@ -83,7 +83,7 @@ public class Main {
                             + "* 3. Díficil\t\t\t   * \n"
                             + "* 4. Leyenda\t\t\t   * ");
                     System.out.println("************************************");
-                    System.out.printf("DIFICULTAD: ");
+                    System.out.printf("Dificultad: ");
                     dificultad = sc.nextInt();
                     sc.nextLine();
                     while (dificultad < 1 || dificultad > 4) { //Corrige si la dificultad está mal indicada
