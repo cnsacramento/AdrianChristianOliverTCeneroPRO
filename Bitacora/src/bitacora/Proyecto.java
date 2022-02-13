@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Proyecto {
     
-    private String nombre;
+  private String nombre;
     private String descripcion;
     private HashMap<String,Anotacion> anotaciones;
     
@@ -21,12 +21,27 @@ public class Proyecto {
      */
     public Proyecto(){}
     
-    public Proyecto(String nombre, String descripcion, HashMap anotaciones) {
+    /**
+     * Contructor del proyecto que añade el hashmap vacío
+     * @param nombre obtiene el nombre del proyecto
+     * @param descripcion obtiene la descripción del proyecto
+     */
+    public Proyecto(String nombre, String descripcion) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.anotaciones = anotaciones;
+        this.anotaciones = new HashMap<>();
     }
+    /**
+     * Método que sirve para añadir las anotaciones al proyecto
+     * @param anotacion clave para buscar la anotación
+     * @param anotaciones objeto anotación
+     */
+    public void anyadirAnotacion(String anotacion, Anotacion anotaciones) {
+        
+        this.anotaciones.put(anotacion, anotaciones);
+    } 
     
+    @Override
     public String toString() {
         return "El nombre del proyecto es: " + nombre 
                 +"\nY su descripción es: " + descripcion;
