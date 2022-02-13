@@ -83,7 +83,7 @@ public class Partida {
     @Override
     public String toString() {
         
-        return "Estado:" + estado + ", " + "Dificultad: " + dificultad;
+        return "Estado: " + estado + ", " + "Dificultad: " + dificultad;
     } 
 
     public String getDificultad() {
