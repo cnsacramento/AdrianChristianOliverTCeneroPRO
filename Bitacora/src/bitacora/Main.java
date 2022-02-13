@@ -23,14 +23,11 @@ public class Main {
         //Todas las variables utilizadas
         boolean continuar = true;
         int opcion;
-        GestorProyectos gestorProyectos = null;
-        Proyecto proyecto = null;
-        Anotacion anotacion = null;
+        GestorProyectos gestorProyectos = new GestorProyectos();
+        Proyecto proyecto = new Proyecto();
         String cabecera, cuerpo;
-        HashMap<String,Anotacion> proyectoAnotaciones = new HashMap<String,Anotacion>();
         String nombreAnotacion;
         String nombreProyecto, descripcionProyecto;
-        HashMap<String,Proyecto> proyectos = new HashMap<String,Proyecto>();
         
         System.out.println("////////////////////////");
         System.out.println("// BITÁCORA PROYECTOS //");
@@ -44,7 +41,7 @@ public class Main {
             System.out.println("|| 2. Crear anotación  ||");
             System.out.println("|| 3. Consultar datos  ||");
             System.out.println("|| 4. Salir            ||");
-            System.out.println("========================");
+            System.out.println("=========================");
             System.out.printf("Opción: ");
             opcion = sc.nextInt(); sc.nextLine();
             while (opcion < 1 || opcion > 4) { //Corrige la opción
@@ -61,17 +58,16 @@ public class Main {
                     nombreProyecto = sc.nextLine();
                     System.out.println("Descripción del Proyecto: ");
                     descripcionProyecto = sc.nextLine();
-                    proyecto = new Proyecto(nombreProyecto,descripcionProyecto, proyectoAnotaciones);
-                    proyectos.put(nombreProyecto, proyecto);
-                    gestorProyectos = new GestorProyectos(proyectos);
+                    proyecto = new Proyecto(nombreProyecto,descripcionProyecto);
+                    gestorProyectos.anyadirProyecto(nombreProyecto, proyecto);
                     break;
                 case 2: 
                     System.out.printf("Cabecera: ");
                     cabecera = sc.nextLine();
                     System.out.println("Cuerpo: ");
                     cuerpo = sc.nextLine();
-                    anotacion = new Anotacion(cabecera,cuerpo);
-                    proyectoAnotaciones.put(cabecera, anotacion);
+                    Anotacion anotacion = new Anotacion(cabecera,cuerpo);
+                    proyecto.anyadirAnotacion(cabecera, anotacion);
                     break;
                 case 3:
                     System.out.println("---------------------");
@@ -79,25 +75,25 @@ public class Main {
                     System.out.println("---------------------");
                     System.out.println("Listado de Proyectos: ");
                     System.out.println("----------------------");
-                    HashMap listadoProyectos = gestorProyectos.getProyectos();
-                    Set<String> claves = listadoProyectos.keySet();
-                    for (String clave : claves) { //Recorre el hasmap en busca de las claves
+                    Set<String> claves = gestorProyectos.getProyectos().keySet();
+                    for (String clave : claves) { //Recorre el hasmap de proyectos en busca de las claves
                         System.out.println( "-" + clave );
                     }
                     System.out.println("\n¿Qué proyecto quieres ver?");
                     nombreProyecto = sc.nextLine();
-                    System.out.println(listadoProyectos.get(nombreProyecto));
+                    System.out.println( gestorProyectos.getProyectos().get(nombreProyecto));
                     
+                    System.out.print("------------------------------------------------------------");
                     System.out.println("\n" + "Listado de Anotaciones del proyecto " + nombreProyecto);
-                    HashMap listadoAnotaciones = proyecto.getAnotaciones();
-                    
-                    claves = listadoAnotaciones.keySet();
+                    System.out.println("------------------------------------------------------------");
+                    //Recorre el listado de anotaciones en busca de las claves
+                    claves = gestorProyectos.getProyectos().get(nombreProyecto).getAnotaciones().keySet();
                     for (String clave : claves) { 
                         System.out.println("-" + clave);
                     }
                     System.out.println("\n¿Qué anotación deseas ver?");
                     nombreAnotacion = sc.nextLine();
-                    System.out.println( "\n" + listadoAnotaciones.get(nombreAnotacion) + "\n" );
+                    System.out.println( "\n" + gestorProyectos.getProyectos().get(nombreProyecto).getAnotaciones().get(nombreAnotacion)+ "\n" );
                     break;
             }
         }
