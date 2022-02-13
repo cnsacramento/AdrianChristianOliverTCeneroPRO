@@ -49,9 +49,6 @@ public class Main {
                 System.out.printf("Nueva Opción: ");
                 opcion = sc.nextInt();sc.nextLine();
             }
-            if (opcion == 4) { //Finaliza el programa
-                continuar = false;
-            }
             switch (opcion) {
                 case 1: 
                     System.out.printf("Nombre del Proyecto: ");
@@ -94,6 +91,9 @@ public class Main {
                     System.out.println("\n¿Qué anotación deseas ver?");
                     nombreAnotacion = sc.nextLine();
                     System.out.println( "\n" + gestorProyectos.getProyectos().get(nombreProyecto).getAnotaciones().get(nombreAnotacion)+ "\n" );
+                    break;
+                case 4:
+                    continuar = false;
                     break;
             }
         }
