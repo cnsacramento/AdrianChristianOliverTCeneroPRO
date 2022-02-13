@@ -19,7 +19,10 @@ public class Proyecto {
     /**
      * Contructor vacío del Proyecto
      */
-    public Proyecto(){}
+    public Proyecto(){
+        
+        this.anotaciones = new HashMap<>();
+    }
     
     /**
      * Contructor del proyecto que añade el hashmap vacío
