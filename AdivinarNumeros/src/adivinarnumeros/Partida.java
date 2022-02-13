@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class Partida {
     
-    private int dificultad;
+   private String dificultad;
     private String estado;
     private int numPartida;
     private int numeroIntentos;
@@ -36,21 +36,25 @@ public class Partida {
             case 1:
                 numeroSecreto = rnd.nextInt(10) + 1;
                 this.numeroIntentos = 3;
+                this.dificultad = "Fácil";
                 break;
             //dificultad 2 = media
             case 2:
                 numeroSecreto = rnd.nextInt(100) + 1;
                 this.numeroIntentos = 5;
+                this.dificultad = "Media";
                 break;
             //dificultad 3 = díficil
             case 3:
                 numeroSecreto = rnd.nextInt(1000) + 1;
                 this.numeroIntentos = 7;
+                this.dificultad = "Díficil";
                 break;
             //dificultad 4 = Leyenda
             case 4:
                 numeroSecreto = rnd.nextInt(10000) + 1;
                 this.numeroIntentos = 10;
+                this.dificultad = "Leyenda";
                 break;
         }
         return numeroSecreto;
@@ -76,6 +80,28 @@ public class Partida {
          return respuesta;
      }
 
+    @Override
+    public String toString() {
+        
+        return "Estado:" + estado + ", " + "Dificultad: " + dificultad;
+    } 
+
+    public String getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(String dificultad) {
+        this.dificultad = dificultad;
+    }
+
+    public int getNumPartida() {
+        return numPartida;
+    }
+
+    public void setNumPartida(int numPartida) {
+        this.numPartida = numPartida;
+    }
+    
     public String getEstado() {
         return estado;
     }
