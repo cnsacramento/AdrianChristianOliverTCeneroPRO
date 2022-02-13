@@ -12,48 +12,83 @@ import java.util.Random;
  */
 public class Partida {
     
-    private int numeroSecreto;
     private int dificultad;
-    private String jugador;
-    
-    
-    /**
-     * 
-     * @param dificultad grado de dificultad de la partida elegida por el jugador
-     * @param jugador persona que juega la partida
-     */
-    Partida (int dificultad, String jugador) {
-        
-        this.dificultad = dificultad;
-        this.jugador = jugador;
-    }
+    private String estado;
+    private int numPartida;
+    private int numeroIntentos;
     
     /**
-     * Método que sirve para generar un número aleatorio en función de la dificultad
-     * @return devuelve el número aleatorio llamado número secreto
+     * Constructor por defecto
      */
-    public int generarNumeroSecreto() {
+    public Partida(){}
+    
+    /**
+     * Método que genera el aleatorio y otorga un número de intentos
+     * @param dificultad
+     * @return el número aleatorio según dificultad
+     */
+    public int generarSecreto(int dificultad) {
         
         Random rnd = new Random();
+        int numeroSecreto = 0;
         switch (dificultad) {
             //dificulad 1 = fácil
             case 1:
-                numeroSecreto = rnd.nextInt(10);
+                numeroSecreto = rnd.nextInt(10) + 1;
+                this.numeroIntentos = 3;
                 break;
             //dificultad 2 = media
             case 2:
-                numeroSecreto = rnd.nextInt(100);
+                numeroSecreto = rnd.nextInt(100) + 1;
+                this.numeroIntentos = 5;
                 break;
             //dificultad 3 = díficil
             case 3:
-                numeroSecreto = rnd.nextInt(1000);
+                numeroSecreto = rnd.nextInt(1000) + 1;
+                this.numeroIntentos = 7;
                 break;
             //dificultad 4 = Leyenda
             case 4:
-                numeroSecreto = rnd.nextInt(10000);
-                break;                
+                numeroSecreto = rnd.nextInt(10000) + 1;
+                this.numeroIntentos = 10;
+                break;
         }
-        
         return numeroSecreto;
+    }
+    
+     public String proximidadNumeros (int numeroSecreto, int numeroUsuario) {
+         
+         String respuesta;
+         if (numeroSecreto == numeroUsuario) {
+             respuesta = "Enhorabuena!!! Has acertado el número secreto.";
+             this.numeroIntentos = 0;
+             this.estado = "Ganada";
+         }else {
+             respuesta = (numeroSecreto < numeroUsuario) 
+                     ? "El número secreto es menor a " + numeroUsuario
+                     : "El número secreto es mayor a " + numeroUsuario;
+             this.numeroIntentos--;
+             if(this.numeroIntentos == 0){
+                 respuesta = "Has pérdido el número secreto era: " + numeroSecreto;
+                 this.estado = "Pérdida";
+             }
+         }
+         return respuesta;
+     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public int getNumeroIntentos() {
+        return numeroIntentos;
+    }
+
+    public void setNumeroIntentos(int numeroIntentos) {
+        this.numeroIntentos = numeroIntentos;
     }
 }
