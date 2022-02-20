@@ -76,17 +76,9 @@ public class Main {
                         System.out.println("Listado de Proyectos: ");
                         System.out.println("----------------------");
                         //New Feature
-                        //gestorProyectos.ordenarProyectos(); //llama al método para ordenarlos //Hecho arriba
                         for ( Map.Entry<String, Proyecto> claves : gestorProyectos.getProyectoOrdenados() ){
                             System.out.println(claves.getKey());
                         }
-                        //@Deprecade
-                        /*
-                        Set<String> claves = gestorProyectos.getProyectos().keySet();
-                        for (String clave : claves) { //Recorre el hasmap de proyectos en busca de las claves
-                            System.out.println( "-" + clave );
-                        }
-                        */
                         System.out.println("\n¿Qué proyecto quieres ver?");
                         nombreProyecto = sc.nextLine();
                         System.out.println( gestorProyectos.getProyectos().get(nombreProyecto));
@@ -97,14 +89,6 @@ public class Main {
                         for (Map.Entry<String,Anotacion> claves : proyecto.getAnotacionesOrdenadas()) {
                             System.out.println(claves.getKey());
                         }
-                        
-                        //Recorre el listado de anotaciones en busca de las claves
-                        /* @ Deprecated
-                        claves = gestorProyectos.getProyectos().get(nombreProyecto).getAnotaciones().keySet();
-                        for (String clave : claves) { 
-                            System.out.println("-" + clave);
-                        }
-                        */
                         System.out.println("\n¿Qué anotación deseas ver?");
                         nombreAnotacion = sc.nextLine();
                         System.out.println( "\n" + gestorProyectos.getProyectos().get(nombreProyecto).getAnotaciones().get(nombreAnotacion)+ "\n" );
