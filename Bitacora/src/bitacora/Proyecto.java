@@ -28,10 +28,6 @@ public class Proyecto {
      * Contructor vacío del Proyecto
      */
     public Proyecto(){
-<<<<<<< HEAD
-        
-=======
->>>>>>> featureProyecto
         this.anotaciones = new HashMap<>();
     }
     
