@@ -4,22 +4,57 @@
  */
 package adivinarnumeros;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author regalado
+ * @author regalado y Christian Novo
  */
 public class Jugador {
     
     private String alias;
-    // La clase Historial aún no ha sido creada y hay que plantearla y diseñarla antes de implementarla en la clase Jugador.
-    // Historial historial;
     private int experiencia;
     private int nivel;
+    private int partidasJugadas ;
+    private int partidasGanadas;
+    private int partidasPerdidas;
+    private ArrayList partidas = new ArrayList();
     
-    Jugador(String alias){    
+    /**
+     * Constructor por defecto
+     */
+    public Jugador () {}
+    
+    /**
+     * Constructor para el alias
+     * @param alias 
+     */
+    public Jugador(String alias){    
         this.alias = alias;
         experiencia = 0;
         nivel = 1;    
+    }
+    
+    /**
+     * Método que Incrementa las partidas ganadas, pérdidas y jugadas
+     * @param estado 
+     */
+    public void estadisticaPartida (boolean estado) {
+        
+        if (estado) {
+            partidasGanadas++;
+        }else {
+            partidasPerdidas++;
+        }
+        partidasJugadas = partidasGanadas + partidasPerdidas;
+    }
+    
+    /**
+     * Método que agrega una partida al historial del jugador
+     * @param partida agrega la partida al historial
+     */
+    public void anyadirPartida(Partida partida) {
+        this.partidas.add(partida);
     }
     
     public void subirNivel(){
@@ -30,9 +65,63 @@ public class Jugador {
         this.experiencia += experiencia;
     }
     
+    /**
+     * Método que contiene todos los datos del jugador
+     * @return 
+     */
     @Override
     public String toString(){
-        return "Nombre: " + alias + "\nNivel: " + nivel + "\nExperiencia: " + experiencia + "\nExperiencia para el siguiente nivel:";        
+        return "Alias: " + alias 
+                + "\nPartidas Jugadas: " + partidasJugadas
+                + "\nPartidas Ganadas: " + partidasGanadas
+                + "\nPartidas Pérdidas: " + partidasPerdidas;        
     }
-    
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public ArrayList getPartidas() {
+        return partidas;
+    }
+
+    public void setPartidas(ArrayList partidas) {
+        this.partidas = partidas;
+    }
+
+    public int getPartidasJugadas() {
+        return partidasJugadas;
+    }
+
+    public void setPartidasJugadas(int partidasJugadas) {
+        this.partidasJugadas = partidasJugadas;
+    }
+
+    public int getPartidasGanadas() {
+        return partidasGanadas;
+    }
+
+    public void setPartidasGanadas(int partidasGanadas) {
+        this.partidasGanadas = partidasGanadas;
+    }
+
+    public int getPartidasPerdidas() {
+        return partidasPerdidas;
+    }
+
+    public void setPartidasPerdidas(int partidasPerdidas) {
+        this.partidasPerdidas = partidasPerdidas;
+    }
 }
