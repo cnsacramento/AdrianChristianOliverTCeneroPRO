@@ -12,8 +12,8 @@ import java.util.Random;
  */
 public class Partida {
     
-   private String dificultad;
-    private String estado;
+    private String dificultad;
+    private boolean estado;
     private int numPartida;
     private int numeroIntentos;
     
@@ -60,31 +60,47 @@ public class Partida {
         return numeroSecreto;
     }
     
-     public String proximidadNumeros (int numeroSecreto, int numeroUsuario) {
-         
-         String respuesta;
-         if (numeroSecreto == numeroUsuario) {
-             respuesta = "Enhorabuena!!! Has acertado el número secreto.";
-             this.numeroIntentos = 0;
-             this.estado = "Ganada";
-         }else {
-             respuesta = (numeroSecreto < numeroUsuario) 
-                     ? "El número secreto es menor a " + numeroUsuario
-                     : "El número secreto es mayor a " + numeroUsuario;
-             this.numeroIntentos--;
-             if(this.numeroIntentos == 0){
-                 respuesta = "Has pérdido el número secreto era: " + numeroSecreto;
-                 this.estado = "Pérdida";
-             }
-         }
-         return respuesta;
-     }
+    /**
+     * Método sobre el que se basa la partida, comprobando si se acierta o falla y restando los intentos
+     * @param numeroSecreto es decir, el número que se tiene que adivinar
+     * @param numeroUsuario el número que el usuario cree que es
+     * @return respuesta de si ha acerteado, el número es menor o mayor, y cuando ha pérdido
+     */
+    public String proximidadNumeros (int numeroSecreto, int numeroUsuario) {
 
+        String respuesta;
+        if (numeroSecreto == numeroUsuario) {
+            respuesta = "Enhorabuena!!! Has acertado el número secreto.";
+            this.numeroIntentos = 0;
+            this.estado = true; //Ganada
+        }else {
+            respuesta = (numeroSecreto < numeroUsuario) 
+                    ? "El número secreto es menor a " + numeroUsuario
+                    : "El número secreto es mayor a " + numeroUsuario;
+            this.numeroIntentos--;
+            if(this.numeroIntentos == 0){
+                respuesta = "Has pérdido el número secreto era: " + numeroSecreto;
+                this.estado = false; //Pérdida
+            }
+        }
+        return respuesta;
+     }
+    
+    /**
+     * Método que contiene el estado de la partida actual
+     * @return 
+     */
     @Override
     public String toString() {
         
-        return "Estado: " + estado + ", " + "Dificultad: " + dificultad;
-    } 
+        String estadoStr = (estado == true) ? "Ganada" : "Pérdida";
+        return "Estado: " + estadoStr + ", " + "Dificultad: " + dificultad;
+    }
+    
+    /**
+     * Se crean los getters y setters
+     * @return 
+     */
 
     public String getDificultad() {
         return dificultad;
@@ -102,11 +118,11 @@ public class Partida {
         this.numPartida = numPartida;
     }
     
-    public String getEstado() {
+    public boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
