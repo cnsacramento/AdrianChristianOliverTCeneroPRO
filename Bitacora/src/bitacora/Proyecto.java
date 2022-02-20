@@ -4,7 +4,12 @@
  */
 package bitacora;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -12,14 +17,19 @@ import java.util.HashMap;
  */
 public class Proyecto {
     
-  private String nombre;
+    private String nombre;
     private String descripcion;
     private HashMap<String,Anotacion> anotaciones;
+    //New Feature
+    private ArrayList<Map.Entry<String,Anotacion>> anotacionesOrdenadas;
+    private Date fecha;
     
     /**
      * Contructor vacío del Proyecto
      */
-    public Proyecto(){}
+    public Proyecto(){
+        this.anotaciones = new HashMap<>();
+    }
     
     /**
      * Contructor del proyecto que añade el hashmap vacío
@@ -30,6 +40,7 @@ public class Proyecto {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.anotaciones = new HashMap<>();
+        this.fecha = new Date();
     }
     /**
      * Método que sirve para añadir las anotaciones al proyecto
@@ -41,10 +52,27 @@ public class Proyecto {
         this.anotaciones.put(anotacion, anotaciones);
     } 
     
+    /**
+     * Método que ordena las anotaciones por fecha
+     * @return ArrayList ordenado por fecha
+     */
+    public ArrayList ordenarAnotaciones () {
+        
+        anotacionesOrdenadas = new ArrayList<>(anotaciones.entrySet());
+        Collections.sort( anotacionesOrdenadas, new Comparator<Map.Entry<String,Anotacion>>() {
+            @Override
+            public int compare(Map.Entry<String, Anotacion> a1, Map.Entry<String, Anotacion> a2) {
+                return a1.getValue().getFecha().compareTo(a2.getValue().getFecha());
+            }
+        });
+        return anotacionesOrdenadas;
+    }
+    
     @Override
     public String toString() {
         return "El nombre del proyecto es: " + nombre 
-                +"\nY su descripción es: " + descripcion;
+                +"\nY su descripción es: " + descripcion
+                + "\n Creado: " + fecha;
     }
 
     public String getNombre() {
@@ -70,4 +98,22 @@ public class Proyecto {
     public void setAnotaciones(HashMap<String, Anotacion> anotaciones) {
         this.anotaciones = anotaciones;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public ArrayList<Map.Entry<String, Anotacion>> getAnotacionesOrdenadas() {
+        return anotacionesOrdenadas;
+    }
+
+    public void setAnotacionesOrdenadas(ArrayList<Map.Entry<String, Anotacion>> anotacionesOrdenadas) {
+        this.anotacionesOrdenadas = anotacionesOrdenadas;
+    }
+    
+    
 }
